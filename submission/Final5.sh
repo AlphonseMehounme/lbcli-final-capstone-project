@@ -9,7 +9,7 @@ PUBKEY2=$(bitcoin-cli -signet -rpcwallet=AlphonseMehounme getaddressinfo $ADDRES
 ADDRESS3=$(bitcoin-cli -signet -rpcwallet=AlphonseMehounme getnewaddress "" "bech32")
 PUBKEY3=$(bitcoin-cli -signet -rpcwallet=AlphonseMehounme getaddressinfo $ADDRESS3 | jq -r '.pubkey')
 
-MULTISIG=$(bitcoin-cli -signet -rpcwallet=AlphonseMehounme createmultisig 2 '''["'$PUBKEY1'","'$PUBKEY2'","'$PUBKEY3'"]''' "bech32")
+MULTISIG=$(bitcoin-cli -signet -rpcwallet=AlphonseMehounme createmultisig 2 '''["'$PUBKEY1'","'$PUBKEY2'","'$PUBKEY3'"]''')
 echo $MULTISIG
 MULTISIG_ADDRESS=$(echo $MULTISIG | jq -r '.address')
 echo $MULTISIG_ADDRESS
